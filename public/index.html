@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Project</title>
+    <link rel="stylesheet" href="./CSS/main.css" />
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./JS/getAll.js"></script>
+    <script src="./JS/query.js"></script>
+    <script src="./JS/main.js"></script>
+    <main>
+      <form>
+        <header>
+          <div id="queryDiv" class="grid">
+            <div id="searchDiv" class="grid transition">
+              <div id="searchSection" class="grid">
+                <div class="labelDiv grid">
+                  <label for="search" id="label" class="label">NAMES</label>
+                  <input
+                    type="search"
+                    name="names"
+                    placeholder="Write the game name here!"
+                    id="search"
+                    class="search transition"
+                  />
+                  <div id="recommendDiv" class="grid"></div>
+                </div>
+                <div class="grid" id="yearsDiv">
+                  <div class="grid">
+                    <label for="year1" id="label1" class="year label"
+                      >FROM</label
+                    >
+                    <input
+                      type="number"
+                      name="from"
+                      placeholder="Write the beginning year here!"
+                      id="year1"
+                      class="search year transition"
+                    />
+                  </div>
+                  <div class="grid">
+                    <label for="year2" id="label2" class="year label">TO</label>
+                    <input
+                      type="number"
+                      name="to"
+                      placeholder="Write the end year here!"
+                      id="year2"
+                      class="search year transition"
+                    />
+                  </div>
+                  <div class="grid" id="buttonDiv">
+                    <input
+                      type="button"
+                      value="SEARCH"
+                      id="submitBtn"
+                      class="pointer transition"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div id="gameLibrary">Game<span id="library">L</span>ibrary</div>
+            </div>
+            <div id="labelDiv" class="grid"></div>
+          </div>
+        </header>
+        <nav class="grid transition"></nav>
+        <section id="mainSection" class="grid">
+          <article id="gameArticle"></article>
+        </section>
+        <footer>
+          <div>
+            <button type="button" id="more" class="pointer grid transition mainButton">
+              &#10227;
+            </button>
+          </div>
+        </footer>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,517 @@
+:root {
+  --submitRed: rgb(142, 54, 54);
+  --submitHoverRed: rgb(148, 33, 33);
+  --arrowRed: rgb(142, 54, 54);
+  --arrowHoverRed: rgb(148, 33, 33);
+  --labelColor: rgb(31, 21, 21);
+  --deleteColor: rgb(167, 34, 34);
+  --selectColor: rgb(167, 167, 191);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.grid {
+  display: grid;
+  place-items: center;
+  grid-gap: 1rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.transition {
+  transition: 0.3s;
+}
+
+.hidden {
+  height: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+/* clears the 'X' from Internet Explorer */
+input[type="search"]::-ms-clear,
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Remove number type arrows in input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+#queryDiv {
+  grid-row-gap: 0;
+}
+
+#searchDiv,
+#labelForm {
+  transform-origin: top center;
+}
+
+#searchDiv {
+  grid-template-columns: auto auto;
+  margin: 1rem 0;
+  width: 100vw;
+}
+
+#searchSection {
+  grid-template-columns: auto;
+  max-height: 10rem;
+}
+
+#yearsDiv {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#buttonDiv {
+  height: 100%;
+  place-items: flex-end;
+  display: none;
+  position: relative;
+}
+
+#submitBtn {
+  height: 2rem;
+  width: 5rem;
+  background-color: var(--submitRed);
+  transform: translateY(-1rem);
+  position: relative;
+  top: 0.8rem;
+}
+
+#submitBtn:hover {
+  background-color: var(--submitHoverRed);
+}
+
+.labelDiv,
+#filterDiv {
+  grid-row-gap: 0;
+  height: 5rem;
+}
+
+.label {
+  color: #ff595e;
+  height: 2rem;
+  margin: 0 1rem;
+}
+
+.search {
+  width: 15rem;
+  height: 2rem;
+  border-bottom-right-radius: 5rem;
+  background-color: transparent;
+  box-shadow: 3px 3px 0px 2px #ff595e;
+  color: white;
+}
+
+.year {
+  display: none;
+}
+
+#label {
+  transform: translateY(1rem);
+}
+#label1,
+#label2 {
+  color: #a6b1e1;
+}
+#label,
+#label1,
+#label2 {
+  grid-template-columns: 1fr;
+}
+#year1,
+#year2 {
+  box-shadow: 3px 3px 0px 2px #a6b1e1;
+}
+
+#recommendDiv,
+.yearsDiv {
+  width: 15rem;
+  position: relative;
+  z-index: 5;
+  display: none;
+}
+
+.recommend {
+  background-color: rgb(76, 102, 143);
+  border-bottom-right-radius: 2rem;
+  transform-origin: right top;
+  width: 100%;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#gameLibrary {
+  font-size: 1.5rem;
+}
+
+#gameLibrary::first-letter {
+  font-size: 2rem;
+  color: var(--selectColor);
+}
+#library {
+  font-size: 2rem;
+  color: rgb(175, 79, 79);
+}
+
+/* LABEL START */
+
+#labelDiv {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 0rem;
+  padding: 1rem 0;
+}
+
+.label {
+  grid-template-columns: 1fr 1rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.labels {
+  width: 9rem;
+  height: 2rem;
+  flex-basis: auto;
+  background-color: black;
+  padding: 1rem 0;
+  border: 2px solid var(--labelColor);
+  border-radius: 1rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  color: rgb(11, 11, 11);
+  cursor: pointer;
+}
+
+.label:nth-of-type(5) {
+  grid-column: 1/3;
+}
+
+.label:nth-of-type(6) {
+  grid-column: 3/5;
+}
+
+.delete {
+  background-color: var(--labelColor);
+  width: 1rem;
+  font-size: 0.7rem;
+  height: calc(2rem + 2px);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: 2px solid var(--labelColor);
+  position: relative;
+  left: -2rem;
+  transform-origin: right;
+  transform: scale(0);
+}
+
+/* LABEL END */
+
+/* NAV START */
+
+nav {
+  width: 7rem;
+  position: absolute;
+  left: calc(-7rem + 7px);
+  top: 5vh;
+}
+
+.genres {
+  background-color: rgb(173, 26, 26);
+  width: 100%;
+  text-align: center;
+  border-right: 7px solid red;
+  position: relative;
+  left: 0;
+  padding: 0.2rem 0;
+  z-index: 10;
+  color: black;
+}
+
+.genres:hover {
+  left: calc(7rem - 7px);
+}
+
+/* NAV END */
+
+/* MAIN SECTION START */
+
+#mainSection {
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(-2.7rem);
+}
+
+/* gameArticle START */
+
+#gameArticle {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  margin-top: 2rem;
+}
+
+.games {
+  flex-basis: auto;
+}
+
+.upDown,
+.leftRight {
+  border: 2px solid rgb(138, 138, 217);
+  border-radius: 0.8rem;
+  position: absolute;
+  z-index: 2;
+}
+
+.upDown {
+  width: 100%;
+
+  /* animation: animationUpDown 1s forwards; */
+}
+
+.leftRight {
+  height: 100%;
+  /* animation: animationLeftRight 1s forwards 1s; */
+}
+#borderAnimateTop {
+  top: 0;
+  left: 0;
+}
+#borderAnimateRight {
+  top: 0;
+  right: 0;
+}
+#borderAnimateBottom {
+  bottom: 0;
+  right: 0;
+}
+#borderAnimateLeft {
+  bottom: 0;
+  left: 0;
+}
+
+@keyframes animationUpDown {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes animationLeftRight {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+figure {
+  width: 12rem;
+  height: 20rem;
+  border-radius: 0.8rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+figcaption {
+  position: absolute;
+  height: 4.5rem;
+  width: 100%;
+  top: 9rem;
+  background-color: rgb(63, 58, 58, 0.8);
+  color: rgb(254, 255, 255);
+  padding: 0.5rem 2rem;
+}
+
+#infoDiv {
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 20rem;
+  z-index: 2;
+}
+
+.infoDiv {
+  grid-template-rows: 2rem;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.header2 {
+  font-size: 2rem;
+  color: #c11a20;
+  z-index: 2;
+}
+
+.valueDiv {
+  transform-origin: center top;
+  transform: scale(0);
+  width: 100%;
+  background-color: #c11a20;
+  height: 0;
+  padding: 1rem 0.5rem;
+  border-radius: 2rem;
+  color: black;
+}
+
+.mainButton {
+  font-size: 2rem;
+  margin: 1rem auto;
+  background-color: rgb(74, 74, 190);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  border: 5px solid white;
+  color: white;
+}
+
+#back {
+  background-color: rgb(192, 76, 76);
+}
+
+#more:hover {
+  background-color: rgb(43, 43, 186);
+  transform: rotate(360deg);
+}
+#back:hover {
+  background-color: rgb(207, 26, 26);
+  transform: rotate(-360deg);
+}
+
+@media screen and (max-width: 800px) {
+  #gameArticle {
+    width: 10rem;
+  }
+  #searchSection {
+    max-height: 5rem;
+  }
+  #searchDiv {
+    grid-template-columns: 1fr;
+  }
+  #yearsDiv {
+    grid-template-rows: 7rem;
+    transform: translateY(-5rem);
+  }
+  #yearsDiv > .grid {
+    grid-template-rows: 0.5rem;
+  }
+  .year {
+    max-width: 5rem;
+  }
+  #submitBtn {
+    transform: translateY(4rem);
+  }
+  .header2,
+  .valueDiv {
+    font-size: 10px;
+  }
+  #labelDiv {
+    grid-template-columns: 1fr;
+    transform: translateX(1rem);
+  }
+  .labels {
+    width: 9rem;
+    height: 1rem;
+    font-size: 7px;
+  }
+}
+@media screen and (max-width: 291px) {
+  body {
+    overflow: scroll;
+  }
+  #gameArticle,
+  .year,
+  .search,
+  #recommendDiv {
+    width: 5rem;
+  }
+  .header2,
+  .valueDiv,
+  .year,
+  #gameLibrary,
+  .label,
+  #recommendDiv {
+    font-size: 7px;
+  }
+  #gameLibrary {
+    margin: 0 auto;
+    text-align: center;
+  }
+  #submitBtn {
+    transform: translateY(2rem);
+    font-size: 5px;
+  }
+  .year,
+  #submitBtn {
+    max-width: 1rem;
+    height: 2rem;
+  }
+  #yearsDiv {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    transform: translateY(-5rem);
+    grid-column-gap: 0;
+  }
+  #gameLibrary::first-letter,
+  #library {
+    font-size: 10px;
+  }
+}
